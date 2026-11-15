@@ -167,7 +167,9 @@ function createProducts(
     id: `${category}-${index}`,
     name,
     category,
-    image: productImages[name] ?? categoryImages[category],
+    image: productImages[name]
+  ? `${import.meta.env.BASE_URL}${productImages[name].replace(/^\//, "")}`
+  : categoryImages[category],
     emoji: categoryEmojis[category],
     description: `${name}, pilihan camilan dan oleh-oleh dari Lavin Snack. Pilih berat sesuai kebutuhanmu.`,
     prices: isDodol
