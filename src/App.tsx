@@ -334,11 +334,10 @@ function App() {
     }
 
     const orderLines = cart.map((item) => {
-      const weightLabel =
-        item.weight === "250g"
-          ? "250 gram (1/4 kg)"
-          : "1 kg";
-
+       const weightLabel =
+       item.weight === "200g"
+        ? "250 gram (1/4 kg)"
+        : "1 kg";
       const price = item.product.prices[item.weight];
 
       return [
@@ -921,7 +920,7 @@ function App() {
                 <div className="cart-items">
                   {cart.map((item) => {
                     const weightLabel =
-                      item.weight === "250g"
+                      item.weight === "200g"
                         ? "250 gram (1/4 kg)"
                         : "1 kg";
 
