@@ -427,7 +427,7 @@ function App() {
           <div className="hero-visual">
             <div className="hero-photo">
               <img
-                src="/images/logo lavin.jpeg"
+                src={`${import.meta.env.BASE_URL}images/logo lavin.jpeg`}
                 alt="Logo LAVIN SNACK"
 />
               
