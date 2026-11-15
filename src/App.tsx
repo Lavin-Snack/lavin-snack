@@ -367,7 +367,7 @@ function App() {
         <a href="#beranda" className="brand">
           <img
   className="brand-logo"
-  src="/images/lgolvn.png"
+  src={`${import.meta.env.BASE_URL}images/lgolvn.png`}
   alt="LAVIN SNACK"
 />
 
