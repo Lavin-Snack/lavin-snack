@@ -210,6 +210,13 @@ function formatPrice(price: number) {
   }).format(price);
 }
 
+
+
+
+
+
+
+
 function App() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] =
@@ -328,8 +335,8 @@ function App() {
 
     const orderLines = cart.map((item) => {
       const weightLabel =
-        item.weight === "200g"
-          ? "200 gram (1/5 kg)"
+        item.weight === "250g"
+          ? "250 gram (1/4 kg)"
           : "1 kg";
 
       const price = item.product.prices[item.weight];
@@ -378,15 +385,13 @@ function App() {
         </a>
 
         <nav className="nav-links">
-          <a href="#beranda">Beranda</a>
-          <a href="#kategori">Kategori</a>
-          <a href="#produk">Produk</a>
-          <a href="#tentang">Tentang Kami</a>
-          <a href="#kontak">Kontak</a>
-        </nav>
+  <a href="#kategori">Kategori</a>
+  <a href="#produk">Produk</a>
+  <a href="#tentang">Tentang Kami</a>
+</nav>
+</header>
 
-        
-      </header>
+
 
       <main>
         {/* HERO */}
@@ -628,7 +633,7 @@ function App() {
                           }
                         >
                           <option value="200g">
-                            200 gram (1/5 kg)
+                           250 gram (1/4 kg)
                           </option>
                           <option value="1kg">1 kg</option>
                         </select>
@@ -846,7 +851,7 @@ function App() {
                   }))
                 }
               >
-                <option value="200g">200 gram (1/5 kg)</option>
+                <option value="250g">250 gram (1/4 kg)</option>
                 <option value="1kg">1 kg</option>
               </select>
 
@@ -916,8 +921,8 @@ function App() {
                 <div className="cart-items">
                   {cart.map((item) => {
                     const weightLabel =
-                      item.weight === "200g"
-                        ? "200 gram (1/5 kg)"
+                      item.weight === "250g"
+                        ? "250 gram (1/4 kg)"
                         : "1 kg";
 
                     const unitPrice =
