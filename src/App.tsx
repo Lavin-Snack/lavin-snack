@@ -218,6 +218,11 @@ function formatPrice(price: number) {
 
 
 function App() {
+  const [currentPage, setCurrentPage] = useState<
+  "beranda" | "kategori" | "produk" | "tentang"
+>("beranda");
+const [menuOpen, setMenuOpen] = useState(false);
+
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] =
     useState<CategoryFilter>("Semua Produk");
@@ -370,7 +375,7 @@ function App() {
     <div className="app">
       {/* NAVBAR */}
       <header className="navbar">
-        <a href="#beranda" className="brand">
+        <a href="#" className="brand" onClick={(e) => { e.preventDefault(); setCurrentPage("beranda"); }}>
           <img
   className="brand-logo"
   src={`${import.meta.env.BASE_URL}images/lgolvn.png`}
@@ -383,10 +388,20 @@ function App() {
           </span>
         </a>
 
-        <nav className="nav-links">
-  <a href="#kategori">Kategori</a>
-  <a href="#produk">Produk</a>
-  <a href="#tentang">Tentang Kami</a>
+        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+  ☰
+</button>
+
+       <nav className={`nav-links ${menuOpen ? "show-menu" : ""}`}>
+  <a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage("kategori"); }}>Kategori</a>
+  <a href="#" onClick={(e) => {
+  e.preventDefault();
+  setActiveCategory("Semua Produk");
+  setSearch("");
+  setCurrentPage("produk");
+  setMenuOpen(false);
+}}>Produk</a>
+  <a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage("tentang"); }}>Tentang Kami</a>
 </nav>
 </header>
 
@@ -394,6 +409,7 @@ function App() {
 
       <main>
         {/* HERO */}
+        {currentPage === "beranda" && (
         <section className="hero" id="beranda">
           <div className="hero-copy">
             <span className="eyebrow">
@@ -413,11 +429,11 @@ function App() {
             </p>
 
             <div className="hero-actions">
-              <a href="#produk" className="button-primary">
+              <a href="#" className="button-primary" onClick={(e) => { e.preventDefault(); setCurrentPage("produk"); }}>
                 Belanja Sekarang <span>→</span>
               </a>
 
-              <a href="#tentang" className="button-secondary">
+              <a href="#" className="button-secondary" onClick={(e) => { e.preventDefault(); setCurrentPage("tentang"); }}>
                 Kenali Kami
               </a>
             </div>
@@ -442,8 +458,10 @@ function App() {
             
           </div>
         </section>
+        )}
 
         {/* CATEGORY */}
+        {currentPage === "kategori" && (
         <section className="category-section" id="kategori">
           <div className="section-heading centered">
             <span className="eyebrow">PILIHAN CAMILAN</span>
@@ -462,6 +480,7 @@ function App() {
               }`}
               onClick={() => {
                 setActiveCategory("Dodol dan Wajit");
+                setCurrentPage("produk");
                 document
                   .getElementById("produk")
                   ?.scrollIntoView({ behavior: "smooth" });
@@ -483,6 +502,7 @@ function App() {
               }`}
               onClick={() => {
                 setActiveCategory("Kue dan Camilan");
+                setCurrentPage("produk");
                 document
                   .getElementById("produk")
                   ?.scrollIntoView({ behavior: "smooth" });
@@ -504,6 +524,7 @@ function App() {
               }`}
               onClick={() => {
                 setActiveCategory("Keripik dan Makanan Ringan");
+                setCurrentPage("produk");
                 document
                   .getElementById("produk")
                   ?.scrollIntoView({ behavior: "smooth" });
@@ -518,8 +539,10 @@ function App() {
             </button>
           </div>
         </section>
+        )}
 
         {/* PRODUCTS */}
+        {currentPage === "produk" && (
         <section className="products-section" id="produk">
           <div className="section-heading">
             <span className="eyebrow">KATALOG LAVIN SNACK</span>
@@ -677,8 +700,10 @@ function App() {
             </div>
           )}
         </section>
+        )}
 
         {/* ABOUT */}
+        {currentPage === "tentang" && (
         <section className="about-section" id="tentang">
           
 
@@ -703,11 +728,12 @@ function App() {
               dan masukkan pesanan ke keranjang.
             </p>
 
-            <a href="#produk" className="button-primary">
+            <a href="#" className="button-primary" onClick={(e) => { e.preventDefault(); setCurrentPage("produk"); }}>
               Jelajahi Produk →
             </a>
           </div>
         </section>
+        )}
 
         {/* CONTACT */}
         <section className="contact-section" id="kontak">
