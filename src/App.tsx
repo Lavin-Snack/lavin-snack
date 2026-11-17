@@ -393,7 +393,11 @@ const [menuOpen, setMenuOpen] = useState(false);
 </button>
 
        <nav className={`nav-links ${menuOpen ? "show-menu" : ""}`}>
-  <a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage("kategori"); }}>Kategori</a>
+  <a href="#" onClick={(e) => {
+  e.preventDefault();
+  setCurrentPage("kategori");
+  setMenuOpen(false);
+}}>Kategori</a>
   <a href="#" onClick={(e) => {
   e.preventDefault();
   setActiveCategory("Semua Produk");
@@ -401,7 +405,11 @@ const [menuOpen, setMenuOpen] = useState(false);
   setCurrentPage("produk");
   setMenuOpen(false);
 }}>Produk</a>
-  <a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage("tentang"); }}>Tentang Kami</a>
+  <a href="#" onClick={(e) => {
+  e.preventDefault();
+  setCurrentPage("tentang");
+  setMenuOpen(false);
+}}>Tentang Kami</a>
 </nav>
 </header>
 
