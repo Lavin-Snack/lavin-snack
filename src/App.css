@@ -89,6 +89,10 @@ main,
 
 .navbar {
   min-height: 90px;
+  position: sticky;
+top: 0;
+z-index: 1000;
+background: #fffdf8;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -146,6 +150,15 @@ main,
 
 .nav-links a:hover {
   color: var(--orange);
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.show-menu {
+    display: flex;
+  }
 }
 
 .cart-nav-button {
@@ -1529,4 +1542,53 @@ section {
   object-fit: contain;
   display: block;
   flex-shrink: 0;
+}
+/* MENU NAVIGASI HP */
+.menu-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  color: #432b20;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.show-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: #fffdf8;
+    padding: 20px;
+    gap: 20px;
+    z-index: 1001;
+  }
+}
+@media (max-width: 768px) {
+  .navbar .nav-links {
+    display: none !important;
+  }
+
+  .navbar .nav-links.show-menu {
+    display: flex !important;
+    flex-direction: column;
+  }
 }
